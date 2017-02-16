@@ -39,7 +39,7 @@ var playState = {
     objetivo.body.onWorldBounds.add(this.decrementaPuntuacion, this);
 
     // Configura el mensaje de fin de partida y su comportamiento
-    msg = game.add.text(0, -100, '   No eres un\nMachoMachote', {font: '45px Arial', fill: '#B99F0B'});
+    msg = game.add.text(0, -100, '   No eres un\nMacho Machote', {font: '45px Arial', fill: '#B99F0B'});
     msg.x = (ancho - msg.width) / 2;
     tweenFin = game.add.tween(msg);
     tweenFin.to({y: alto}, 3600); // La risa dura 3,6sg
@@ -50,9 +50,7 @@ var playState = {
 
   update: function(){
     var factorDificultad = (-200 + (game.global.dificultad * 10));
-
     homer.body.velocity.x = (game.global.velocidadX * factorDificultad);
-
     game.physics.arcade.overlap(homer, objetivo, this.incrementaPuntuacion, null, this);
   },
 
@@ -61,7 +59,8 @@ var playState = {
     
     if (game.global.puntuacion >= 0) {
       //objetivo.body.gravity.y = objetivo.body.gravity.y - 50;
-      game.global.dificultad = game.global.dificultad - 1;
+	  
+     // game.global.dificultad = game.global.dificultad - 1;
 
       this.borraMarcador();
       this.pintaMarcador();
@@ -82,8 +81,8 @@ var playState = {
     game.global.puntuacion = game.global.puntuacion + 1;
        
     if (game.global.puntuacion >= 0){
-      objetivo.body.gravity.y = objetivo.body.gravity.y + 50;
-      game.global.dificultad = game.global.dificultad + 1;
+     // objetivo.body.gravity.y = objetivo.body.gravity.y + 50;
+     // game.global.dificultad = game.global.dificultad + 1;
       this.borraMarcador();
       this.pintaMarcador();
     } 
@@ -120,6 +119,7 @@ var playState = {
   },
 
   randomInicioX: function(){
+	//    return (ancho - game.global.anchoTorrezno ) / 2;
     return this.numeroAleatorioHasta(ancho - game.global.anchoTorrezno );
   },
 
@@ -136,7 +136,7 @@ var playState = {
       playState.detectaAgitacion(datosAceleracion);
       playState.registraDireccion(datosAceleracion);
     }
-  //  navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
+ //   navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
   },
 
   detectaAgitacion: function(datosAceleracion){

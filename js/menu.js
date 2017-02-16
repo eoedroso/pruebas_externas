@@ -17,7 +17,6 @@ var menuState = {
 		game.load.audio('risa', ['assets/wickedmalelaugh1.ogg', 'assets/wickedmalelaugh1.mp3']);
 		game.load.audio('ronquido', ['assets/ronquido.ogg', 'assets/ronquido.mp3']);
 
-		//game.global = {escala: 1.0};
     	game.global = {escala: 0.3};
 		game.global = {
 			music: true,
@@ -69,30 +68,36 @@ var menuState = {
 		homerFeliz.x = (ancho / 2) - (563 / 4);
 		homerFeliz.y = 200;
 		var tween2 = game.add.tween(homerFeliz.scale);
-		tween2.to({x:0.5, y:0.5}, 1000);
+		tween2.to({x:0.5, y:0.5}, 3000);
 		homerFeliz.inputEnabled = true;
 		homerFeliz.events.onInputDown.add(this.start, this);
 
 		// Logo desarrollo
-		emp = game.add.image(0, 0, 'logo8KA');
-		emp.scale.setTo(0.2, 0.2);
-		emp.x = (ancho / 2) - (emp.width / 2);
-		emp.y = (alto - 120);
-		emp.inputEnabled = true;
+		//emp = game.add.image(0, 0, 'logo8KA');
+		//emp.scale.setTo(0.2, 0.2);
+		//emp.x = (ancho / 2) - (emp.width / 2);
+		//emp.y = (alto - 120);
+		//emp.inputEnabled = true;
 		ronquido = game.add.audio('ronquido');
-		emp.events.onInputDown.add(this.onEmpTap, this);
+		//emp.events.onInputDown.add(this.onEmpTap, this);
 
 
 		// Not for sale
-		msg1 = game.add.text(0, alto - 50, 'Ejercicio didáctico', {font: '20px Arial', fill: '#B99F0B'});
-		msg1.x = (ancho - msg1.width) / 2;
-		msg2 = game.add.text(0, alto - 30, '- Not for Sale -', {font: '20px Arial', fill: '#B99F0B'});
-		msg2.x = (ancho - msg2.width) / 2;
+		//msg1 = game.add.text(0, alto - 50, 'Ejercicio didáctico', {font: '20px Arial', fill: '#B99F0B'});
+		//msg1.x = (ancho - msg1.width) / 2;
+		//msg2 = game.add.text(0, alto - 30, '- Not for Sale -', {font: '20px Arial', fill: '#B99F0B'});
+		//msg2.x = (ancho - msg2.width) / 2;
 		
 		tween1.start(); // Animación del nombre del juego
 		tween2.start(); // Animación de Homer
 
-		//	game.input.onTap.add(this.start, this);
+		if (game.input.onTap instanceof onSpeakerTap){
+		game.input.onTap.add(this.start, this);	
+		} else{
+			game.input.onTap.add(this.start, this);
+		}
+		
+		
 	},
 
 	onEmpTap: function() {
