@@ -136,7 +136,7 @@ var playState = {
       playState.detectaAgitacion(datosAceleracion);
       playState.registraDireccion(datosAceleracion);
     }
-    navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
+  //  navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
   },
 
   detectaAgitacion: function(datosAceleracion){
