@@ -119,8 +119,8 @@ var playState = {
   },
 
   randomInicioX: function(){
-	//    return (ancho - game.global.anchoTorrezno ) / 2;
-    return this.numeroAleatorioHasta(ancho - game.global.anchoTorrezno );
+	    return (ancho - game.global.anchoTorrezno ) / 2;
+    //return this.numeroAleatorioHasta(ancho - game.global.anchoTorrezno );
   },
 
   numeroAleatorioHasta: function(limite){
@@ -136,7 +136,7 @@ var playState = {
       playState.detectaAgitacion(datosAceleracion);
       playState.registraDireccion(datosAceleracion);
     }
- //   navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
+    navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
   },
 
   detectaAgitacion: function(datosAceleracion){
