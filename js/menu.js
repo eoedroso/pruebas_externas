@@ -41,11 +41,11 @@ var menuState = {
 		speaker = game.add.image(10, -50, 'speaker');
 		// Iconos musica
 		if (game.global.music) {
-			speakerMute.y = 10;
+			speaker.y = 10;
 			music1.play();
 			
 		} else {
-			speaker.y = 10;
+			speakerMute.y = 10;
 			music1.stop();
 		}
 		speakerMute.inputEnabled = true;
@@ -73,13 +73,13 @@ var menuState = {
 		homerFeliz.events.onInputDown.add(this.start, this);
 
 		// Logo desarrollo
-		//emp = game.add.image(0, 0, 'logo8KA');
-		//emp.scale.setTo(0.2, 0.2);
-		//emp.x = (ancho / 2) - (emp.width / 2);
-		//emp.y = (alto - 120);
-		//emp.inputEnabled = true;
+		emp = game.add.image(0, 0, 'logo8KA');
+		emp.scale.setTo(0.2, 0.2);
+		emp.x = (ancho / 2) - (emp.width / 2);
+		emp.y = (alto - 120);
+		emp.inputEnabled = true;
 		ronquido = game.add.audio('ronquido');
-		//emp.events.onInputDown.add(this.onEmpTap, this);
+		emp.events.onInputDown.add(this.onEmpTap, this);
 
 
 		// Not for sale
@@ -91,12 +91,8 @@ var menuState = {
 		tween1.start(); // Animación del nombre del juego
 		tween2.start(); // Animación de Homer
 
-		if (game.input.onTap instanceof onSpeakerTap){
-		game.input.onTap.add(this.start, this);	
-		} else{
-			game.input.onTap.add(this.start, this);
-		}
-		
+	
+	//	game.input.onTap.add(this.start, this);	
 		
 	},
 
@@ -105,19 +101,21 @@ var menuState = {
 	},
 
 	onSpeakerTap: function() {
-		// console.log('Sound');
-		game.global.music = true;
+		// console.log(' Mute ');
+		game.global.music = false;
 		speaker.y = -50;
 		speakerMute.y = 10;
-		music1.play();
+		music1.stop();
+		
 	},
 
 	onSpeakerMuteTap: function() {
-		// console.log('Mute');
-		game.global.music = false;
-		speakerMute.y = -50;
+		// console.log(' Sound ');
+		game.global.music = true;
 		speaker.y = 10;
-		music1.stop();
+		speakerMute.y = -50;
+		music1.play();
+	
 	},
 
 	start: function () {

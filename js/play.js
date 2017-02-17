@@ -1,7 +1,7 @@
 var playState = {
 
   create: function() {
-    // Musica de fonso
+    // Musica de fondo
     music2 = game.add.audio('music2');
     music2.loop = true;
     music2.volume = 0.5;
@@ -77,7 +77,9 @@ var playState = {
   },
 
   incrementaPuntuacion: function(){
-    burpSound.play();
+	if (game.global.music) {
+       burpSound.play();
+    } 
     game.global.puntuacion = game.global.puntuacion + 1;
        
     if (game.global.puntuacion >= 0){
@@ -136,7 +138,7 @@ var playState = {
       playState.detectaAgitacion(datosAceleracion);
       playState.registraDireccion(datosAceleracion);
     }
-    navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
+  //  navigator.accelerometer.watchAcceleration(onSuccess, onError, { frequency: 10 });
   },
 
   detectaAgitacion: function(datosAceleracion){
